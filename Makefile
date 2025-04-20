@@ -2,7 +2,7 @@
 # GLOBALS                                                                       #
 #################################################################################
 
-PROJECT_NAME = unsplash-api-wallpaper
+PROJECT_NAME = unsplash-python-wrapper
 PYTHON_VERSION = 3.13
 PYTHON_INTERPRETER = python
 

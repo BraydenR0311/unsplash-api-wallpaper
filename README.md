@@ -1,4 +1,4 @@
-# unsplash-api-wallpaper
+# unsplash-python-wrapper
 
 <a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
     <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
@@ -16,7 +16,7 @@ Currenly, I'm running [dwm](https://dwm.suckless.org/) for my window manager (al
 The program is exposed as a command-line tool.
 ```
 pip install -e .
-python -m unsplash_api_wallpaper.cli orangutans 3 # Pull 3 random images of orangutans.
+python -m unsplash_python_wrapper.cli orangutans 3 # Pull 3 random images of orangutans.
 ```
 
 If no args are specified to the cli, it will parse search_terms.txt, a newline separated file of search terms, and randomly chose one. I have some terms in there that I want as wallpapers.
@@ -51,7 +51,7 @@ WantedBy=default.target
 
 ## TODO
 - Implement deletion of old files once max cache size is exceeded.
-- Store image data in a csv (location, author, image properties, etc.)
+- Store image data in a csv (location, author, image properties, etc.), then journalctl can show the location and description of the wallpaper when its put on the screen.
 - Add entry point in pyproject.toml so script can be called like ```unsplash-rand -s foo -n 42```
 
 ## Project Organization
@@ -72,7 +72,7 @@ WantedBy=default.target
 ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
 │                         generated with `pip freeze > requirements.txt`
 │
-└── unsplash_api_wallpaper   <- Source code for use in this project.
+└── unsplash_python_wrapper   <- Source code for use in this project.
 ```
 
 --------
