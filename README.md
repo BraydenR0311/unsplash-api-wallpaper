@@ -6,6 +6,54 @@
 
 Python wrapper around [Unsplash](https://unsplash.com) for convenient image downloading.
 
+## Goal
+Unsplash has some of the best photos, which would be great wallpapers. I wanted to build my own way of fetching random pictures through the API. In this way, the user can set up systemd services/timers to fetch images every so often.
+
+## Setup
+Currenly, I'm running [dwm](https://dwm.suckless.org/) for my window manager (along with other [suckless](https://suckless.org) tools like [st](https://st.suckless.org), [slstatus](https://tools.suckless.org/slstatus/), and [dmenu](https://tools.suckless.org/dmenu/)).
+
+## Usage
+The program is exposed as a command-line tool.
+```
+pip install -e .
+python -m unsplash_api_wallpaper.cli orangutans 3 # Pull 3 random images of orangutans.
+```
+
+If no args are specified to the cli, it will parse search_terms.txt, a newline separated file of search terms, and randomly chose one. I have some terms in there that I want as wallpapers.
+
+I have a shell script, turned into a systemd service, that chooses a random image from a chosen directory of images.
+```
+#!/usr/bin/bash
+
+# Wallpaper directory
+WALLPAPER_DIR=~/Documents/wallpapers/
+IMG=$(find $WALLPAPER_DIR -type f | shuf -n 1)
+
+# Use random background image
+feh --bg-fill ${IMG}
+
+```
+
+A systemd timer will then start this every so often.
+```
+[Unit]
+Description=Create random background periodically.
+After=graphical.target
+
+[Timer]
+OnBootSec=30min
+OnUnitActiveSec=30min
+Unit=random-background.service
+
+[Install]
+WantedBy=default.target
+```
+
+## TODO
+- Implement deletion of old files once max cache size is exceeded.
+- Store image data in a csv (location, author, image properties, etc.)
+- Add entry point in pyproject.toml so script can be called like ```unsplash-rand -s foo -n 42```
+
 ## Project Organization
 
 ```

@@ -69,7 +69,7 @@ def download_to_jpg(data: list, dirpath: str | os.PathLike) -> list:
         url = img["urls"]["raw"]
 
         # Attempt to download image.
-        print(f"Downloading: {url}")
+        print(f"Downloading: {url}.")
         response = requests.get(url)
         # Raise error if unsuccessful for any reason.
         response.raise_for_status()
@@ -80,11 +80,13 @@ def download_to_jpg(data: list, dirpath: str | os.PathLike) -> list:
         filepath = dirpath.resolve() / filename
 
         # Write save to disk.
-        print(f"Saving to {filepath}")
+        print(f"Saving to {filepath}.")
         with open(filepath, "wb") as f:
             f.write(raw)
         # Keep track of filepaths.
         saved_images.append(filepath)
+
+    print(f"Downloaded {len(saved_images)} images.")
 
     return saved_images
 
