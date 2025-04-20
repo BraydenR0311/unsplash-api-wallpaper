@@ -4,7 +4,7 @@
     <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
 </a>
 
-Python wrapper around (Unsplash)[https://unsplash.com] for convenient image downloading.
+Python wrapper around [Unsplash](https://unsplash.com) for convenient image downloading.
 
 ## Project Organization
 
