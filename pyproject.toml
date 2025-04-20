@@ -1,0 +1,32 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "unsplash_api_wallpaper"
+version = "0.0.1"
+description = "Automatically download wallpapers using unsplash API"
+authors = [
+  { name = "Brayden Riesberg" },
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License"
+]
+requires-python = "~=3.13.0"
+
+
+[tool.ruff]
+line-length = 80
+src = ["unsplash_api_wallpaper"]
+include = ["pyproject.toml", "unsplash_api_wallpaper/**/*.py"]
+
+[tool.ruff.lint]
+extend-select = ["I"]  # Add import sorting
+
+[tool.ruff.lint.isort]
+known-first-party = ["unsplash_api_wallpaper"]
+force-sort-within-sections = true
+
